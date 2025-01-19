@@ -47,7 +47,7 @@ jobs:
 
      
       # Deploy ECS Service Update (Optional)
-      - name: Update ECS Service with New Images
+      - name: Update ECS Service with New Images 
         run: |
           aws ecs update-service \
           --cluster my-cluster \
