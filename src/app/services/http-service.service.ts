@@ -29,7 +29,7 @@ export class HttpServiceService {
   // serverUrl: string = 'http://192.168.0.77:8080/';
     //  serverUrl: string = 'http://192.168.89.205:8080/';
    Url: string ='http://52.40.34.128:8081/profile/get-user-data';
-   Url: string ='http://52.40.34.128:8081/join-request/*';
+  // Url: string ='http://52.40.34.128:8081/join-request/*';
    //serverUrl: string = 'http://3.145.143.209:5555/'
   
      
