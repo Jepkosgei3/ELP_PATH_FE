@@ -18,6 +18,7 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // Retrieve the authorization token from wherever you store it (e.g., local storage, state management).
     const userData = localStorage.getItem('userData');
+    let authToken = '';
     if (userData) {
       const parseData = JSON.parse(userData);
       const authToken = parseData.token;
@@ -26,6 +27,7 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
       const authRequest = request.clone({
         setHeaders: {
           Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
         },
       });
 
