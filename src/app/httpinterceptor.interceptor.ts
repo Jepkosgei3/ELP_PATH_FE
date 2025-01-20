@@ -16,6 +16,16 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    // Log the availability of localStorage
+    if (typeof localStorage === 'undefined') {
+      console.error('localStorage is not available in this environment.');
+      return next.handle(request);
+    }
+
+    console.log('localStorage is available.');
+
+    // Log all the content inside localStorage
+    console.log('Current localStorage contents:', { ...localStorage });
     // Retrieve the authorization token from wherever you store it (e.g., local storage, state management).
     const userData = localStorage.getItem('userData');
     let authToken = '';
