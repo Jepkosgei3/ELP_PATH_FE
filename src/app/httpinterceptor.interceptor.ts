@@ -7,7 +7,6 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-///
 @Injectable()
 export class HttpinterceptorInterceptor implements HttpInterceptor {
   constructor() {}
@@ -16,24 +15,30 @@ export class HttpinterceptorInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // Retrieve the authorization token from wherever you store it (e.g., local storage, state management).
+    // Retrieve the user data from local storage.
     const userData = localStorage.getItem('userData');
+
+    // Check if userData exists and parse it safely.
     if (userData) {
-      const parseData = JSON.parse(userData);
-      const authToken = parseData.token;
+      try {
+        const parsedData = JSON.parse(userData);
+        const authToken = parsedData.token;
 
-      // Clone the request and add the authorization header.
-      const authRequest = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
-
-      // Pass the modified request to the next interceptor or the HTTP client.
-      return next.handle(authRequest);
-    } else {
-      return next.handle(request);
+        if (authToken) {
+          // Clone the request to add the authorization header.
+          const authRequest = request.clone({
+            setHeaders: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+          return next.handle(authRequest);
+        }
+      } catch (error) {
+        console.error('Error parsing userData from localStorage:', error);
+      }
     }
+
+    // Pass through the original request if no auth token is found.
     return next.handle(request);
   }
 }
