@@ -25,10 +25,10 @@ export class HttpServiceService {
     //serverUrl: string = 'http://192.168.2.9:8080/';
     //serverUrl: string = 'http://192.168.89.11:8080/';
   //  serverUrl: string = 'http://192.168.0.39:8080/';
-   serverUrl: string = 'http://54.200.27.183:8081/';
+   serverUrl: string = 'http://34.215.93.196:8081/';
   // serverUrl: string = 'http://192.168.0.77:8080/';
     //  serverUrl: string = 'http://192.168.89.205:8080/';
-   Url: string ='http://54.200.27.183:8081/profile/get-user-data';
+   Url: string ='http://34.215.93.196:8081/profile/get-user-data';
   // Url: string ='http://52.40.34.128:8081/join-request/*';
    //serverUrl: string = 'http://3.145.143.209:5555/'
   
