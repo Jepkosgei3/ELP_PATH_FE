@@ -1,1 +1,1 @@
-web: ng start
+web: ng serve
